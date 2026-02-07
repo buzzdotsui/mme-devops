@@ -1,11 +1,14 @@
-# 1. Use a lightweight version of Linux with Python pre-installed
 FROM python:3.9-slim
 
-# 2. Set the "folder" inside the container where our code lives
 WORKDIR /app
 
-# 3. Copy your hardness.py from your laptop into the container
+# Copy the requirements list first
+COPY requirements.txt .
+
+# Install the libraries inside the container
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Now copy the script
 COPY hardness.py .
 
-# 4. Tell the container what command to run when it starts
 CMD ["python", "hardness.py"]

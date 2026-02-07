@@ -1,0 +1,3 @@
+# This tells Docker what Python libraries to download
+numpy
+matplotlib
