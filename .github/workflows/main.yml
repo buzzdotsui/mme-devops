@@ -1,0 +1,11 @@
+name: MME Calculator CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t mme-test .
+      - name: Run Python Check
+        run: python -m py_compile hardness.py
