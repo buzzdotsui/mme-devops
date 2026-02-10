@@ -1,3 +1,4 @@
-# This tells Docker what Python libraries to download
+# Python dependencies for MME Calculator
 numpy
 matplotlib
+pytest

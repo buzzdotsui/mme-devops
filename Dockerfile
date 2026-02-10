@@ -8,7 +8,9 @@ COPY requirements.txt .
 # Install the libraries inside the container
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Now copy the script
+# Copy the entire project
+COPY main.py .
 COPY hardness.py .
+COPY mme_calc/ ./mme_calc/
 
-CMD ["python", "hardness.py"]
+CMD ["python", "main.py"]

@@ -1,0 +1,2 @@
+Enter Brinell Hardness (HB): --- Result ---
+Estimated Tensile Strength: 517.50 MPa
