@@ -526,6 +526,42 @@ def menu_stress_strain():
 
 
 # ===================================================================
+# Module 9 — Visualizations
+# ===================================================================
+
+from mme_calc import plotting
+
+def menu_visualizations():
+    options = [
+        "Stress-Strain Curve (Engineering)",
+        "Cooling Curve (Newton's Law)",
+        "Hardness Conversion Chart (HRC vs HB)",
+    ]
+    while True:
+        c = _show_menu("VISUALIZATIONS & PLOTS", options)
+        if c == 0: return
+
+        save_option = _input("  Save plot to file? (y/n): ").lower().startswith('y')
+        filename = None
+        if save_option:
+            filename = _input("  Enter filename (e.g. plot.png): ")
+
+        if c == 1:
+            E = _positive_float("  Young's Modulus E (MPa): ")
+            sy = _positive_float("  Yield Strength σ_y (MPa): ")
+            uts = _positive_float("  Ultimate Tensile Strength σ_uts (MPa): ")
+            ef = _positive_float("  Strain at Fracture ε_f (e.g. 0.2): ")
+            plotting.plot_stress_strain(E, sy, uts, ef, filename=filename)
+        elif c == 2:
+            t0 = _float("  Initial Temperature T₀: ")
+            t_inf = _float("  Ambient Temperature T_∞: ")
+            k = _positive_float("  Cooling constant k: ")
+            duration = _positive_float("  Duration (seconds): ")
+            plotting.plot_cooling_curve(t0, t_inf, k, duration, filename=filename)
+        elif c == 3:
+            plotting.plot_hardness_conversion(filename=filename)
+
+# ===================================================================
 # Main menu
 # ===================================================================
 
@@ -538,6 +574,7 @@ CATEGORIES = [
     ("Crystallography & Defects",   menu_crystallography),
     ("Composite Materials",         menu_composites),
     ("Stress & Strain Analysis",    menu_stress_strain),
+    ("Visualizations & Plots",      menu_visualizations),
 ]
 
 

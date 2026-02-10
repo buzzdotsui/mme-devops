@@ -1,0 +1,72 @@
+=Agg : The term 
+'=Agg' is not 
+recognized as the 
+name of a cmdlet, 
+function, script 
+file, or operable 
+program. Check the 
+spelling of the name, 
+or if a path was 
+included, verify that 
+the path is correct 
+and try again.
+At line:1 char:1
++ ='Agg'; python -m 
+pytest tests/
++ ~~~~~~
+    + CategoryInfo    
+          : ObjectNo  
+  tFound: (=Agg:Str   
+ ing) [], CommandN    
+otFoundException
+    + FullyQualifiedE 
+   rrorId : CommandN  
+  otFoundException
+ 
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\USER\projects\mme_devops
+collected 67 items
+
+tests\test_all.py ...................................................... [ 80%]
+..........                                                               [ 95%]
+tests\test_plotting.py FFF                                               [100%]
+
+================================== FAILURES ===================================
+____________________ TestPlotting.test_stress_strain_plot _____________________
+
+self = <test_plotting.TestPlotting object at 0x00000197640082D0>
+
+    def test_stress_strain_plot(self):
+        # Smoke test: ensure it runs without error (mock show/savefig if needed)
+        # Using show=False to prevent blocking
+>       plotting.plot_stress_strain(200000, 250, 400, 0.2, show=False)
+        ^^^^^^^^
+E       NameError: name 'plotting' is not defined
+
+tests\test_plotting.py:10: NameError
+____________________ TestPlotting.test_cooling_curve_plot _____________________
+
+self = <test_plotting.TestPlotting object at 0x0000019764008410>
+
+    def test_cooling_curve_plot(self):
+>       plotting.plot_cooling_curve(1000, 25, 0.05, 100, show=False)
+        ^^^^^^^^
+E       NameError: name 'plotting' is not defined
+
+tests\test_plotting.py:17: NameError
+_________________ TestPlotting.test_hardness_conversion_plot __________________
+
+self = <test_plotting.TestPlotting object at 0x0000019763FECE90>
+
+    def test_hardness_conversion_plot(self):
+>       plotting.plot_hardness_conversion(show=False)
+        ^^^^^^^^
+E       NameError: name 'plotting' is not defined
+
+tests\test_plotting.py:20: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_plotting.py::TestPlotting::test_stress_strain_plot - NameEr...
+FAILED tests/test_plotting.py::TestPlotting::test_cooling_curve_plot - NameEr...
+FAILED tests/test_plotting.py::TestPlotting::test_hardness_conversion_plot - ...
+======================== 3 failed, 64 passed in 0.45s =========================
